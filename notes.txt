@@ -1,0 +1,103 @@
+Chapter 73 - Objects: Construtors for Methods
+
+1. what Are Construtors for Methods?
+
+    Definitions:
+
+    when you create a Construtor function . you can also define methods inside the 
+    Construtor . These methods will then be available to all Objects created from that  
+    Construtor.
+
+    In simple terms , Construtor can be used not only for defining properties but also for defining
+    functions (methods) that  all Objects can share.
+
+    Key Concept:
+
+    A method is a function associated with an Object . when we define methods inside a 
+    Construtor , each Object created using that Construtor will have access to those 
+    methods.
+
+2. Why Construtors for methods?
+
+    Code Reusability:
+
+    It allows us to define common behavior (methods) for Objects created using the 
+    Construtor.
+
+    Organized Code:
+
+    Construtors for methods keep the data (properties) and functionality (methods) related
+    to an Object in one place.
+
+    Efficient Object creation:
+
+    Methods inside Construtors can perform actions on the Object's properties and can be 
+    used by all Objects created from that Construtor.
+
+3. How to Define Methods in a Construtor?    
+
+    you define a method inside the Construtor function just like you define a regula
+    function.
+
+    Example:
+
+    function Car(color, model, year){
+        // Properties
+        this.color = color;
+        this.model = model;
+        this.year  = year;
+
+       // method to start the car
+       this.start = function() {
+        console.log(this.model + " is starting...");
+       };
+
+       // Method to display the car's details
+       this.displayDetails = function() {
+           console.log("car: " + this.model + " , color: ", this.color + ", year: " + this.year);
+       };
+    }
+
+
+      //   Objects of Car
+    var car1 = new Car("red", "Toyota", 2020);
+    var car2 = new Car("blue", "Honda", 2019);
+      //   Test the Methods
+    car1.start();
+    car2.displayDetails();
+
+
+    car1.start(); // output: Toyota is starting...
+    car2.displayDetails(); // output: car: Honda , color:  blue, year: 2019
+    here, the start and displayDetails methods are defined inside the car Construtor.
+    Every Car Object has access to these methods.
+
+4. Why Define Methods inside Construtors?    
+
+    Define methods inside the Construtor is useful if you need methods that work with 
+    the specific properties of each Object.
+
+    Each Object created from the Construtor will have its own copy of the method, so it
+    can use the method with its own data.
+
+    Example :
+
+    function person(name , age) {
+        this.name = name;
+        this.age = age;
+        this.greet = function() {
+            console.log("Hello, my name is " + this.name + "and I am " + this.age + "years old.");
+        };
+    }
+
+    var person1 = new person("Alice",30);
+    var person2 = new person("Bob",20);
+
+5. Best Practice for Construtor with Methods
+         while you can define methods inside the Construtor, it is often better to define
+         methods outside the Construtor using prototypes. This way , all Objects share the same
+         method rather than having a copy of the method for each Object (which consumes more memory).
+         we will learn about prototypes in the next chapter!
+
+         
+    
